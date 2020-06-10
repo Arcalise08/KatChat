@@ -5,6 +5,7 @@ import {
 } from 'react-native';
 import { Dimensions } from "react-native";
 import Button from "react-native-button";
+import Options from "./Options";
 
 var width = Dimensions.get('window').width; //full width
 var height = Dimensions.get('window').height;
@@ -15,7 +16,8 @@ class Contacts extends React.Component {
         this.state = {
             toggleAdd: false,
             userSearch: "",
-            errorMSG: ""
+            errorMSG: "",
+            showOptions: false
         }
     }
 
@@ -37,9 +39,9 @@ class Contacts extends React.Component {
                 activeOpacity={0.6}
                 underlayColor="#DDDDDD"
                 onPress={() => {this.props.navigation.navigate("Chat", { contact: title.username, friendID: title.friendID})}}
-                style={{ marginBottom:15, borderWidth:2, borderRadius: 5, borderColor: "grey", height: 70}}
+                style={{ marginBottom:15, borderWidth:2, borderRadius: 5, backgroundColor: this.props.extra.getColor.button, height: 70}}
             >
-                <Text style={styles.title}>{title.username}</Text>
+                <Text style={[styles.title, {color: this.props.extra.getColor.text}]}>{title.username}</Text>
             </TouchableHighlight>
         );
     }
@@ -74,13 +76,22 @@ class Contacts extends React.Component {
         else if (data === null) {
             this.setState({errorMSG: "Couldnt find a user with that name! Sorry!"})
         }
-
     }
 
     render() {
-        this.props.navigation.setOptions({ title: "Contacts", headerTitleStyle:{fontSize: 20, fontWeight: "bold"} });
+        this.props.navigation.setOptions({ title: "Contacts", headerTitleStyle:{fontSize: 20, fontWeight: "bold", color: this.props.extra.getColor.text}, headerStyle:{backgroundColor: this.props.extra.getColor.header}, headerRight: () => (
+                <TouchableHighlight
+                    onPress={() => this.setState({showOptions: true})}
+                    style={{marginRight: 5}}
+                    underlayColor="#DDDDDD">
+                    <Image
+                        style={{ width: 35, height: 35 }}
+                        source={require('../assets/controls.png')}
+                    />
+                </TouchableHighlight>
+            ), });
         return (
-            <View style={{flex:1, marginTop: 15}}>
+            <View style={{flex:1, backgroundColor: this.props.extra.getColor.background}}>
                 <FlatList
                     data={this.props.contacts}
                     renderItem={({ item }) => this.listItem(item)}
@@ -106,7 +117,8 @@ class Contacts extends React.Component {
                                 <Text style={styles.modalText}>Search for a friend!</Text>
                                 <TextInput
                                     placeholder={"Username"}
-                                    style={{width: 160,padding: 5,height: 40, borderColor: 'gray', borderWidth: 1 }}
+                                    style={{padding: 5, alignSelf:"stretch",height: 40, borderColor: 'gray', borderWidth: 1 }}
+                                    textAlign="center"
                                     textAlign="center"
                                     onChangeText={(text) => {
                                         this.setState({
@@ -117,13 +129,13 @@ class Contacts extends React.Component {
                                 <Text style={{color: "red", marginTop: 5,textAlign:"center"}}>{this.state.errorMSG}</Text>
                                 <View style={{flexDirection: "row",marginTop:10}}>
                                     <Button
-                                        containerStyle={{padding:10, height:45, marginRight:5, overflow:'hidden', borderRadius:4, backgroundColor: "black"}}
-                                        style={{color: "white"}}
+                                        containerStyle={{marginTop:25, margin: 5, flex: 1,alignSelf:"center", marginBottom: 10, padding:10, height:45, overflow:'hidden', borderRadius:4, backgroundColor: this.props.extra.getColor.button}}
+                                        style={{color: this.props.extra.getColor.text}}
                                         onPress={() => this.setState({toggleAdd: false, errorMSG: ""})}
                                     >Cancel</Button>
                                     <Button
-                                        containerStyle={{padding:10, height:45, overflow:'hidden', borderRadius:4, backgroundColor: "black"}}
-                                        style={{color: "white"}}
+                                        containerStyle={{marginTop:25, margin: 5, flex: 1,alignSelf:"center", marginBottom: 10, padding:10, height:45, overflow:'hidden', borderRadius:4, backgroundColor: this.props.extra.getColor.button}}
+                                        style={{color: this.props.extra.getColor.text}}
                                         onPress={() => {
                                             this.userInitiateSearch()
                                         }}
@@ -134,11 +146,12 @@ class Contacts extends React.Component {
                         </View>
                     </Modal>
                 </View>
+                <Options showModal={this.state.showOptions} closeReq={() => this.setState({showOptions: false})} extra={this.props.extra}/>
                 <View>
                     <TouchableOpacity
                         activeOpacity={0.6}
                         onPress={()=> this.setState({toggleAdd: true})}
-                        style={{marginRight:15 , alignSelf: "flex-end"}}
+                        style={{marginRight:15, marginBottom:15, alignSelf: "flex-end"}}
                     >
                         <Image
                             style={{width:70,height:70}}
@@ -146,6 +159,7 @@ class Contacts extends React.Component {
                         />
                     </TouchableOpacity>
                 </View>
+
             </View>
         )
     }
@@ -159,11 +173,6 @@ const styles = StyleSheet.create({
         backgroundColor: "white",
         borderColor: 'cyan',
         borderWidth: 2
-    },
-    image: {
-        flex: 1,
-        width: "100%",
-        justifyContent: "center"
     },
     centeredView: {
         flex: 1,

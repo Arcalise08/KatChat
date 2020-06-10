@@ -61,8 +61,13 @@ class SignIn extends React.Component {
 
 
     render() {
+        this.props.navigation.setOptions({
+            title: "Sign In",
+            headerTitleStyle: {fontSize: 20, fontWeight: "bold", color: this.props.extra.getColor.text},
+            headerStyle: {backgroundColor: this.props.extra.getColor.header},
+        });
         return(
-            <View style={{flex:1}}>
+            <View style={{flex:1, backgroundColor: this.props.extra.getColor.background}}>
                 <ImageBackground style={{width: width, height: height}} source={require('../assets/background.png')}>
                     <View style={{justifyContent:"center", alignItems:'center', marginTop: 25}}>
                         <Text style={{fontSize: 32, fontFamily:"monospace", fontWeight: "bold", }}>Kat Chat</Text>
@@ -81,11 +86,11 @@ class SignIn extends React.Component {
                             }}
                         >
                             <View style={styles.centeredView}>
-                                <View style={styles.modalView}>
-                                    <Text style={styles.modalText}>Enter a display name.</Text>
+                                <View style={[styles.modalView, {backgroundColor: this.props.extra.getColor.modalBG}]}>
+                                    <Text style={styles.modalText}>Enter a display name</Text>
                                     <TextInput
                                         placeholder={"Name"}
-                                        style={{width: 120,padding: 5,height: 40, borderColor: 'gray', borderWidth: 1 }}
+                                        style={{padding: 5, alignSelf:"stretch",height: 40, backgroundColor: "white", borderColor: 'gray', borderWidth: 1 }}
                                         textAlign="center"
                                         onChangeText={(text) => {
                                             this.setState({
@@ -94,13 +99,15 @@ class SignIn extends React.Component {
                                         }}
                                     />
                                     <Text style={{color: "red"}}>{this.state.errorMSG}</Text>
-                                    <View style={{flexDirection: "row",marginTop:10}}>
+                                    <View style={{flexDirection: "row", marginTop:10}}>
                                         <Button
-                                            style={{color: "#24A9F0", marginRight: 20}}
+                                            containerStyle={{marginTop:25, margin: 5, flex: 1,alignSelf:"center", marginBottom: 10, padding:10, height:45, overflow:'hidden', borderRadius:4, backgroundColor: this.props.extra.getColor.button}}
+                                            style={{color: this.props.extra.getColor.text, marginRight: 20}}
                                             onPress={() => this.setState({promptName: false})}
                                         >Cancel</Button>
                                         <Button
-                                            style={{color: "#24A9F0"}}
+                                            containerStyle={{marginTop:25, margin: 5, flex: 1,alignSelf:"center", marginBottom: 10, padding:10, height:45, overflow:'hidden', borderRadius:4, backgroundColor: this.props.extra.getColor.button}}
+                                            style={{color: this.props.extra.getColor.text}}
                                             onPress={() => {
                                                 this.toChatFromPrompt();
                                             }}
@@ -111,13 +118,13 @@ class SignIn extends React.Component {
                         </Modal>
                     </View>
                     <View style={{flex:1}}>
-                        <Button containerStyle={{marginTop:25, alignSelf:"center", marginBottom: 10,width: 260, padding:10, height:45, overflow:'hidden', borderRadius:4, backgroundColor: "#31D13B"}}
-                                style={{color: "black"}}
+                        <Button containerStyle={{marginTop:25, alignSelf:"center", marginBottom: 10,width: 260, padding:10, height:45, overflow:'hidden', borderRadius:4, backgroundColor: this.props.extra.getColor.button}}
+                                style={{color: this.props.extra.getColor.text}}
                                 onPress={() => this.toChat()}>
                             Sign In
                         </Button>
                         <Button
-                                style={{color: "black",fontWeight:"bold", fontSize: 12, marginTop: 15}}
+                                style={{color: this.props.extra.getColor.text,fontWeight:"bold", fontSize: 12, marginTop: 15}}
                                 onPress={() => {
                                     this.props.extra.setUser("")
                                     this.setState({promptName: true})
@@ -180,8 +187,9 @@ const styles = StyleSheet.create({
         textAlign: "center"
     },
     modalText: {
-        marginBottom: 15,
-        textAlign: "center"
+        fontSize: 25,
+        marginBottom: 25,
+        textAlign: "center",
     }
 
 })

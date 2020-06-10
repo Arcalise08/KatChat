@@ -31,9 +31,11 @@ class App extends React.Component {
     super();
     this.state = {
         messages: [],
+        filteredMessages: [],
         username: "",
         uid: "",
-        queryContact: ""
+        queryContact: "",
+        appColor: {}
     }
     const firebaseConfig = {
       apiKey: "AIzaSyBMydP5FWgVaHRnGdTUnUS6rnjmJPACWEw",
@@ -51,7 +53,18 @@ class App extends React.Component {
   }
 
     componentDidMount() {
-    this.unsubAuth = firebase.auth().onAuthStateChanged(async user => {
+        this.SignIn()
+        this.changeAppColor("blue")
+    }
+
+    componentWillUnmount() {
+        this.unsubAuth();
+        this.unsubCONTACTS();
+        this.unsubMSG();
+    }
+
+    SignIn = async () => {
+        this.unsubAuth = firebase.auth().onAuthStateChanged(async user => {
             if (!user) {
                 await firebase.auth().signInAnonymously();
             }
@@ -70,7 +83,6 @@ class App extends React.Component {
                 .then(doc => {
                     if (!doc.exists) {
                         this.messages.set({
-                            messages: []
                         })
                     }
                 })
@@ -93,14 +105,11 @@ class App extends React.Component {
         })
     }
 
-    componentWillUnmount() {
-      this.unsubAuth();
-      this.unsubCONTACTS();
-      this.unsubMSG();
-    }
+
 
     sendMessage = (message) => {
         let error = false;
+        const target = message[0].to
         message[0].createdAt = Date.now();
 
         try {
@@ -111,8 +120,9 @@ class App extends React.Component {
             toSender.get()
                 .then(doc => {
                     if (doc.exists) {
+
                         toSender.update({
-                            messages: firebase.firestore.FieldValue.arrayUnion(message[0])
+                            [this.state.uid]: firebase.firestore.FieldValue.arrayUnion(message[0])
                         })
                     }
                     else {
@@ -126,24 +136,20 @@ class App extends React.Component {
         finally {
             if (!error) {
                 this.messages.update({
-                    messages: firebase.firestore.FieldValue.arrayUnion(message[0])
+                    [target]: firebase.firestore.FieldValue.arrayUnion(message[0])
                 })
             }
-
         }
-
     }
 
     updateMessages = (querySnapshot) => {
         const data = querySnapshot.data();
         if (data) {
-            const reverse = data.messages.reverse();
             this.setState({
-                messages: data.messages
+                messages: data
             })
         }
     }
-
 
 
     updateContacts = (querySnapshot) => {
@@ -188,6 +194,75 @@ class App extends React.Component {
       })
     }
 
+    changeAppColor = (color) => {
+        switch(color) {
+            case "white":
+                var temp = {
+                    modelBG: "#D6D6D6",
+                    button: "grey",
+                    header: "#D6D6D6",
+                    text: "black",
+                    background: "white",
+                    message: {
+                        left: {background: "#ffb49d", text: "black", time: "#49a2a8"},
+                        right: {background: "#9dfff8", text: "black", time: "#49a2a8"},
+                        system: '#647ef2'
+                    }
+
+                }
+                this.setState({appColor: temp});
+                break;
+
+            case "black":
+                var temp = {
+                    modelBG: "#6D6B6B",
+                    button: "#503E36",
+                    header: "#6D6B6B",
+                    text: "white",
+                    background: "black",
+                    message: {
+                        left: {background: "#ffb49d", text: "black", time: "#ccc3ca"},
+                        right: {background: "#9dfff8", text: "black", time: "#ccc3ca"},
+                        system: ""
+                    }
+                }
+                this.setState({appColor: temp});
+                break;
+            case "blue":
+                var temp = {
+                    modalBG: "#89D7F2",
+                    button: "#4fb7d9",
+                    header: "#4f77db",
+                    text: "black",
+                    background: "#1BDAED",
+                    message: {
+                        left: {background: "#ffb49d", text: "black", time: "#49a2a8"},
+                        right: {background: "#9dfff8", text: "black", time: "#49a2a8"},
+                        system: '#647ef2'
+                    }
+                }
+                this.setState({appColor: temp});
+                break;
+            case "red":
+                var temp = {
+                    modelBG: "#AA6A6A",
+                    button: "#B20000",
+                    header: "#C02C2C",
+                    text: "black",
+                    background: "#E48982",
+                    message: {
+                        left: {background: "#ffb49d", text: "black", time: "#ccc3ca"},
+                        right: {background: "#9dfff8", text: "black", time: "#ccc3ca"},
+                        system: '#647ef2'
+                    }
+                }
+                this.setState({appColor: temp});
+                break;
+        }
+
+    }
+
+
     render() {
       //extra consists of universal methods accessible to entire app
       const extra = {
@@ -195,7 +270,11 @@ class App extends React.Component {
             getUser: {username: this.state.username, uid: this.state.uid},
             setUser: (username) => this.setUsername(username),
             addContact: (contact) => this.addContact(contact),
-            searchUser: (query) => this.searchContact(query)
+            searchUser: (query) => this.searchContact(query),
+            setColor: (color) => this.changeAppColor(color),
+            getColor: this.state.appColor,
+
+
         }
     return (
         <NavigationContainer>
@@ -212,7 +291,7 @@ class App extends React.Component {
             </Stack.Screen>
             <Stack.Screen
                 name="Chat"
-                >{props => <Chat messages={this.state.messages} {...props} extra={extra} />}
+                >{props => <Chat {...props} messages={this.state.messages} extra={extra} />}
             </Stack.Screen>
           </Stack.Navigator>
         </NavigationContainer>
