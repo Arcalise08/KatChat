@@ -94,9 +94,9 @@ class App extends React.Component {
     }
 
     componentWillUnmount() {
-      this.unsubAuth;
-      this.unsubCONTACTS;
-      this.unsubMSG
+      this.unsubAuth();
+      this.unsubCONTACTS();
+      this.unsubMSG();
     }
 
     sendMessage = (message) => {
