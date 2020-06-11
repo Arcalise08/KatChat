@@ -1,4 +1,32 @@
-import React, {createRef} from 'react';
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>JSDoc: Source: Chat.js</title>
+
+    <script src="scripts/prettify/prettify.js"> </script>
+    <script src="scripts/prettify/lang-css.js"> </script>
+    <!--[if lt IE 9]>
+      <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <link type="text/css" rel="stylesheet" href="styles/prettify-tomorrow.css">
+    <link type="text/css" rel="stylesheet" href="styles/jsdoc-default.css">
+</head>
+
+<body>
+
+<div id="main">
+
+    <h1 class="page-title">Source: Chat.js</h1>
+
+    
+
+
+
+    
+    <section>
+        <article>
+            <pre class="prettyprint source linenums"><code>import React, {createRef} from 'react';
 import { StyleSheet, Text, View, Alert, TouchableHighlight } from 'react-native';
 import Button from 'react-native-button'
 import { GiftedChat, Day, SystemMessage, Bubble, Time, Message, InputToolbar } from "react-native-gifted-chat";
@@ -39,7 +67,7 @@ class Chat extends React.Component {
 
     customSystemMessage(props, color) {
         return (
-            <SystemMessage
+            &lt;SystemMessage
                 {...props}
                 textStyle={{
                     color: color.system
@@ -50,7 +78,7 @@ class Chat extends React.Component {
 
     customDay(props, color) {
         return (
-            <Day
+            &lt;Day
                 {...props}
                 textStyle={{
                     color: color.system
@@ -61,7 +89,7 @@ class Chat extends React.Component {
 
     customBubble(props, color) {
         return (
-            <Bubble
+            &lt;Bubble
                 {...props}
                 wrapperStyle={{
                     right: {
@@ -85,7 +113,7 @@ class Chat extends React.Component {
 
     customMessage(props, color) {
         return (
-            <Message
+            &lt;Message
                 {...props}
                 customTextStyle={{fontSize: 20, lineHeight: 40}} // or more it's depend whats font you use}
             />
@@ -94,7 +122,7 @@ class Chat extends React.Component {
 
     customTime(props, color) {
         return (
-            <Time
+            &lt;Time
                 {...props}
                 timeTextStyle={{
                     right: {
@@ -112,7 +140,7 @@ class Chat extends React.Component {
         if (this.props.extra.getConnection == false) {
         } else {
             return (
-                <InputToolbar
+                &lt;InputToolbar
                     {...props}
                 />
             );
@@ -155,7 +183,7 @@ class Chat extends React.Component {
     }
 
     renderCustomActions = (props) => {
-        return <CustomActions {...props} imgQued={(url) => this.imageQueued(url) } sendLocation={(location) => this.locationSend(location, props)} imgStatus={this.state.image}/>;
+        return &lt;CustomActions {...props} imgQued={(url) => this.imageQueued(url) } sendLocation={(location) => this.locationSend(location, props)} imgStatus={this.state.image}/>;
     };
 
     renderCustomView (props) {
@@ -166,8 +194,8 @@ class Chat extends React.Component {
                     longitude: currentMessage.location.longitude
             }
             return (
-                <View style={{borderRadius: 25, width: 150, height: 100}}>
-                    <MapView
+                &lt;View style={{borderRadius: 25, width: 150, height: 100}}>
+                    &lt;MapView
                         style={{width: 130,
                             height: 85,
                             marginLeft: 10,
@@ -179,10 +207,10 @@ class Chat extends React.Component {
                             latitudeDelta: 0.0922,
                             longitudeDelta: 0.0421,
                         }}
-                    ><MapView.Marker
+                    >&lt;MapView.Marker
                         coordinate={coordinate}
-                    /></MapView>
-                </View>
+                    />&lt;/MapView>
+                &lt;/View>
             );
         }
         return null;
@@ -199,8 +227,8 @@ class Chat extends React.Component {
         });
 
         return (
-            <View style={{flex:1,height: '100%', backgroundColor: this.props.extra.getColor.background}}>
-                <GiftedChat
+            &lt;View style={{flex:1,height: '100%', backgroundColor: this.props.extra.getColor.background}}>
+                &lt;GiftedChat
                     messages={this.props.messages[this.props.route.params.friendID]}
                     onSend={messages => this.onSend(messages)}
                     renderCustomView={this.renderCustomView}
@@ -219,8 +247,31 @@ class Chat extends React.Component {
                     renderInputToolbar={(props) => this.renderInputToolbar(props)}
 
                 />
-            </View>
+            &lt;/View>
         )
     }
 }
 export default Chat;
+</code></pre>
+        </article>
+    </section>
+
+
+
+
+</div>
+
+<nav>
+    <h2><a href="index.html">Home</a></h2><h3>Modules</h3><ul><li><a href="module-Chat.html">Chat</a></li><li><a href="module-Contacts.html">Contacts</a></li><li><a href="module-CustomActions.html">CustomActions</a></li><li><a href="module-SignIn.html">SignIn</a></li></ul>
+</nav>
+
+<br class="clear">
+
+<footer>
+    Documentation generated by <a href="https://github.com/jsdoc/jsdoc">JSDoc 3.6.4</a> on Thu Jun 11 2020 16:28:40 GMT-0500 (Central Daylight Time)
+</footer>
+
+<script> prettyPrint(); </script>
+<script src="scripts/linenumber.js"> </script>
+</body>
+</html>

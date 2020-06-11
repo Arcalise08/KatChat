@@ -11,11 +11,46 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="47513e17-c67f-416c-a65e-b89610be1403" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/out/App.js.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/Chat.js.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/Contacts.js.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/CustomActions.js.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/SignIn.js.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/fonts/OpenSans-Bold-webfont.eot" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/fonts/OpenSans-Bold-webfont.svg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/fonts/OpenSans-Bold-webfont.woff" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/fonts/OpenSans-BoldItalic-webfont.eot" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/fonts/OpenSans-BoldItalic-webfont.svg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/fonts/OpenSans-BoldItalic-webfont.woff" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/fonts/OpenSans-Italic-webfont.eot" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/fonts/OpenSans-Italic-webfont.svg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/fonts/OpenSans-Italic-webfont.woff" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/fonts/OpenSans-Light-webfont.eot" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/fonts/OpenSans-Light-webfont.svg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/fonts/OpenSans-Light-webfont.woff" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/fonts/OpenSans-LightItalic-webfont.eot" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/fonts/OpenSans-LightItalic-webfont.svg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/fonts/OpenSans-LightItalic-webfont.woff" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/fonts/OpenSans-Regular-webfont.eot" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/fonts/OpenSans-Regular-webfont.svg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/fonts/OpenSans-Regular-webfont.woff" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/index.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/module-Chat.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/module-Contacts.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/module-CustomActions.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/module-SignIn.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/scripts/linenumber.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/scripts/prettify/Apache-License-2.0.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/scripts/prettify/lang-css.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/scripts/prettify/prettify.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/styles/jsdoc-default.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/styles/prettify-jsdoc.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/styles/prettify-tomorrow.css" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/App.js" beforeDir="false" afterPath="$PROJECT_DIR$/App.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/components/Chat.js" beforeDir="false" afterPath="$PROJECT_DIR$/components/Chat.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/components/Contacts.js" beforeDir="false" afterPath="$PROJECT_DIR$/components/Contacts.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/components/CustomActions.js" beforeDir="false" afterPath="$PROJECT_DIR$/components/CustomActions.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/components/Options.js" beforeDir="false" afterPath="$PROJECT_DIR$/components/Options.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/components/SignIn.js" beforeDir="false" afterPath="$PROJECT_DIR$/components/SignIn.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -48,6 +83,7 @@
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../../test/KatChat" />
     <property name="nodejs_package_manager_path" value="npm" />
   </component>
   <component name="SvnConfiguration">
@@ -66,7 +102,9 @@
       <workItem from="1591723951338" duration="31225000" />
       <workItem from="1591756014303" duration="19020000" />
       <workItem from="1591820285685" duration="23075000" />
-      <workItem from="1591853618137" duration="14034000" />
+      <workItem from="1591853618137" duration="14688000" />
+      <workItem from="1591900767120" duration="2710000" />
+      <workItem from="1591908827952" duration="2723000" />
     </task>
     <servers />
   </component>
@@ -93,6 +131,10 @@
       <screen x="72" y="27" width="1848" height="1053" />
     </state>
     <state x="698" y="355" width="586" height="403" key="#com.intellij.fileTypes.FileTypeChooser/72.27.1848.1053@72.27.1848.1053" timestamp="1591776250483" />
+    <state x="779" y="311" width="424" height="491" key="FileChooserDialogImpl" timestamp="1591911667360">
+      <screen x="72" y="27" width="1848" height="1053" />
+    </state>
+    <state x="779" y="311" width="424" height="491" key="FileChooserDialogImpl/72.27.1848.1053@72.27.1848.1053" timestamp="1591911667360" />
     <state x="659" y="259" width="672" height="678" key="search.everywhere.popup" timestamp="1591859458619">
       <screen x="72" y="27" width="1848" height="1053" />
     </state>

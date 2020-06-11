@@ -1,4 +1,32 @@
-import React from 'react';
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>JSDoc: Source: SignIn.js</title>
+
+    <script src="scripts/prettify/prettify.js"> </script>
+    <script src="scripts/prettify/lang-css.js"> </script>
+    <!--[if lt IE 9]>
+      <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <link type="text/css" rel="stylesheet" href="styles/prettify-tomorrow.css">
+    <link type="text/css" rel="stylesheet" href="styles/jsdoc-default.css">
+</head>
+
+<body>
+
+<div id="main">
+
+    <h1 class="page-title">Source: SignIn.js</h1>
+
+    
+
+
+
+    
+    <section>
+        <article>
+            <pre class="prettyprint source linenums"><code>import React from 'react';
 import {
     StyleSheet, Text, View, Alert,
     Modal, TextInput, ImageBackground, Dimensions, KeyboardAvoidingView
@@ -28,7 +56,7 @@ class SignIn extends React.Component {
      * @description checks for valid username either sends to contacts or toggles prompt for valid username.
      */
     toChat = () => {
-        if (this.props.extra.getUser.username.length <= 2) {
+        if (this.props.extra.getUser.username.length &lt;= 2) {
             if (this.props.extra.getConnection) {
                 this.setState({
                     promptName: true
@@ -86,14 +114,14 @@ class SignIn extends React.Component {
             headerStyle: {backgroundColor: this.props.extra.getColor.header},
         });
         return(
-            <View style={{flex:1, backgroundColor: this.props.extra.getColor.background}}>
-                <ImageBackground style={{width: width, height: height}} source={require('../assets/background.png')}>
-                    <View style={{justifyContent:"center", alignItems:'center', marginTop: 25}}>
-                        <Text style={{fontSize: 32, fontFamily:"monospace", fontWeight: "bold", }}>Kat Chat</Text>
-                    </View>
+            &lt;View style={{flex:1, backgroundColor: this.props.extra.getColor.background}}>
+                &lt;ImageBackground style={{width: width, height: height}} source={require('../assets/background.png')}>
+                    &lt;View style={{justifyContent:"center", alignItems:'center', marginTop: 25}}>
+                        &lt;Text style={{fontSize: 32, fontFamily:"monospace", fontWeight: "bold", }}>Kat Chat&lt;/Text>
+                    &lt;/View>
 
-                    <View style={styles.centeredView}>
-                        <Modal
+                    &lt;View style={styles.centeredView}>
+                        &lt;Modal
                             animationType="slide"
                             transparent={true}
                             visible={this.state.promptName}
@@ -104,10 +132,10 @@ class SignIn extends React.Component {
 
                             }}
                         >
-                            <View style={styles.centeredView}>
-                                <View style={[styles.modalView, {backgroundColor: this.props.extra.getColor.modalBG}]}>
-                                    <Text style={styles.modalText}>Enter a display name</Text>
-                                    <TextInput
+                            &lt;View style={styles.centeredView}>
+                                &lt;View style={[styles.modalView, {backgroundColor: this.props.extra.getColor.modalBG}]}>
+                                    &lt;Text style={styles.modalText}>Enter a display name&lt;/Text>
+                                    &lt;TextInput
                                         placeholder={"Name"}
                                         style={{padding: 5, alignSelf:"stretch",height: 40, backgroundColor: "white", borderColor: 'gray', borderWidth: 1 }}
                                         textAlign="center"
@@ -118,50 +146,50 @@ class SignIn extends React.Component {
                                         }}
                                     />
                                     {   this.props.extra.getConnection ?
-                                        this.state.errorMSG != "" ? <Text style={{color: "red", marginTop: 15}}>{this.state.errorMSG}</Text> : null
+                                        this.state.errorMSG != "" ? &lt;Text style={{color: "red", marginTop: 15}}>{this.state.errorMSG}&lt;/Text> : null
                                         :
-                                        <Text style={{color: "red", marginTop: 15}}>Cant connect to server(404)</Text>
+                                        &lt;Text style={{color: "red", marginTop: 15}}>Cant connect to server(404)&lt;/Text>
                                     }
 
 
-                                    <View style={{flexDirection: "row", marginTop:10}}>
-                                        <Button
+                                    &lt;View style={{flexDirection: "row", marginTop:10}}>
+                                        &lt;Button
                                             containerStyle={{marginTop:25, margin: 5, flex: 1,alignSelf:"center", marginBottom: 10, padding:10, height:45, overflow:'hidden', borderRadius:4, backgroundColor: this.props.extra.getColor.button}}
                                             style={{color: this.props.extra.getColor.text, marginRight: 20}}
                                             onPress={() => this.setState({promptName: false})}
-                                        >Cancel</Button>
-                                        <Button
+                                        >Cancel&lt;/Button>
+                                        &lt;Button
                                             containerStyle={{marginTop:25, margin: 5, flex: 1,alignSelf:"center", marginBottom: 10, padding:10, height:45, overflow:'hidden', borderRadius:4, backgroundColor: this.props.extra.getColor.button}}
                                             style={{color: this.props.extra.getColor.text}}
                                             onPress={() => {
                                                 this.toChatFromPrompt();
                                             }}
-                                        >Okay</Button>
-                                    </View>
-                                </View>
-                            </View>
-                        </Modal>
-                    </View>
-                    <View style={{flex:1}}>
+                                        >Okay&lt;/Button>
+                                    &lt;/View>
+                                &lt;/View>
+                            &lt;/View>
+                        &lt;/Modal>
+                    &lt;/View>
+                    &lt;View style={{flex:1}}>
 
-                        <Button containerStyle={{marginTop:25, alignSelf:"center", marginBottom: 10,width: 260, padding:10, height:45, overflow:'hidden', borderRadius:4, backgroundColor: this.props.extra.getColor.button}}
+                        &lt;Button containerStyle={{marginTop:25, alignSelf:"center", marginBottom: 10,width: 260, padding:10, height:45, overflow:'hidden', borderRadius:4, backgroundColor: this.props.extra.getColor.button}}
                                 style={{color: this.props.extra.getColor.text}}
                                 onPress={() => this.toChat()}>
                             Sign In
-                        </Button>
-                        <Button
+                        &lt;/Button>
+                        &lt;Button
                                 style={{color: this.props.extra.getColor.text,fontWeight:"bold", fontSize: 12, marginTop: 15}}
                                 onPress={() => {
                                     this.setState({promptName: true})
                                 }}>
                             Don't like your display name? Click here to change it!
-                        </Button>
+                        &lt;/Button>
 
 
-                    </View>
+                    &lt;/View>
 
-                </ImageBackground>
-            </View>
+                &lt;/ImageBackground>
+            &lt;/View>
         )
     }
 
@@ -221,3 +249,26 @@ const styles = StyleSheet.create({
 
 })
 export default SignIn;
+</code></pre>
+        </article>
+    </section>
+
+
+
+
+</div>
+
+<nav>
+    <h2><a href="index.html">Home</a></h2><h3>Modules</h3><ul><li><a href="module-Chat.html">Chat</a></li><li><a href="module-Contacts.html">Contacts</a></li><li><a href="module-CustomActions.html">CustomActions</a></li><li><a href="module-SignIn.html">SignIn</a></li></ul>
+</nav>
+
+<br class="clear">
+
+<footer>
+    Documentation generated by <a href="https://github.com/jsdoc/jsdoc">JSDoc 3.6.4</a> on Thu Jun 11 2020 16:28:40 GMT-0500 (Central Daylight Time)
+</footer>
+
+<script> prettyPrint(); </script>
+<script src="scripts/linenumber.js"> </script>
+</body>
+</html>
