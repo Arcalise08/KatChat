@@ -6,8 +6,8 @@ import {
 } from 'react-native';
 import Button from "react-native-button";
 
-var width = Dimensions.get('window').width; //full width
-var height = Dimensions.get('window').height;
+const width = Dimensions.get('window').width; //full width
+const height = Dimensions.get('window').height;
 
 function Options(props) {
 

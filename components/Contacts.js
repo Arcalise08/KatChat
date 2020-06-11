@@ -7,8 +7,8 @@ import { Dimensions } from "react-native";
 import Button from "react-native-button";
 import Options from "./Options";
 
-var width = Dimensions.get('window').width; //full width
-var height = Dimensions.get('window').height;
+const width = Dimensions.get('window').width; //full width
+const height = Dimensions.get('window').height;
 
 class Contacts extends React.Component {
     constructor() {
@@ -61,6 +61,7 @@ class Contacts extends React.Component {
     }
     searchContactsCompleted = (data) => {
         if (data) {
+
             if (data.username != this.props.extra.getUser.username) {
                 const newContact = {
                     username: data.username,

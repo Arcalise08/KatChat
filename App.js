@@ -89,7 +89,6 @@ class App extends React.Component {
 
     async testInternet() {
         this.unsubscribeWeb = NetInfo.addEventListener(state => {
-            console.log("Connection type", state.type);
             console.log("Is connected?", state.isConnected);
             if (state.isConnected && !this.state.connected) {
                 this.setState({connected: true})
@@ -130,7 +129,9 @@ class App extends React.Component {
                 .then(doc => {
                     if (!doc.exists) {
                         this.contacts.set({
-                            contacts: []
+                            contacts: [],
+                            _id: this.state.uid,
+                            username: ""
                         })
                     }
                 })
@@ -297,7 +298,7 @@ class App extends React.Component {
     changeAppColor = (color) => {
         switch(color) {
             case "white":
-                var temp = {
+                const white = {
                     modalBG: "white",
                     button: "#E3E0C9",
                     header: "#D6D6D6",
@@ -310,11 +311,11 @@ class App extends React.Component {
                     }
 
                 }
-                this.setState({appColor: temp});
+                this.setState({appColor: white});
                 break;
 
             case "black":
-                var temp = {
+                const black = {
                     modalBG: "#6D6B6B",
                     button: "#97A0B0",
                     header: "#6D6B6B",
@@ -326,10 +327,10 @@ class App extends React.Component {
                         system: "#647ef2"
                     }
                 }
-                this.setState({appColor: temp});
+                this.setState({appColor: black});
                 break;
             case "blue":
-                var temp = {
+                const blue = {
                     modalBG: "#89D7F2",
                     button: "#4fb7d9",
                     header: "#4f77db",
@@ -341,10 +342,10 @@ class App extends React.Component {
                         system: '#647ef2'
                     }
                 }
-                this.setState({appColor: temp});
+                this.setState({appColor: blue});
                 break;
             case "red":
-                var temp = {
+                const red = {
                     modalBG: "#F5927A",
                     button: "#B20000",
                     header: "#C02C2C",
@@ -356,7 +357,7 @@ class App extends React.Component {
                         system: '#647ef2'
                     }
                 }
-                this.setState({appColor: temp});
+                this.setState({appColor: red});
                 break;
         }
         this.localStorage("set", "appColor", color)

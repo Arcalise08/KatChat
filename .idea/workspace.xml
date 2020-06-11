@@ -11,13 +11,12 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="47513e17-c67f-416c-a65e-b89610be1403" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/components/CustomActions.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/App.js" beforeDir="false" afterPath="$PROJECT_DIR$/App.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/components/Chat.js" beforeDir="false" afterPath="$PROJECT_DIR$/components/Chat.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/components/Contacts.js" beforeDir="false" afterPath="$PROJECT_DIR$/components/Contacts.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/components/CustomActions.js" beforeDir="false" afterPath="$PROJECT_DIR$/components/CustomActions.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/components/Options.js" beforeDir="false" afterPath="$PROJECT_DIR$/components/Options.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/components/SignIn.js" beforeDir="false" afterPath="$PROJECT_DIR$/components/SignIn.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -67,7 +66,7 @@
       <workItem from="1591723951338" duration="31225000" />
       <workItem from="1591756014303" duration="19020000" />
       <workItem from="1591820285685" duration="23075000" />
-      <workItem from="1591853618137" duration="11302000" />
+      <workItem from="1591853618137" duration="14034000" />
     </task>
     <servers />
   </component>

@@ -49,7 +49,9 @@ class CustomActions extends React.Component {
     sendLocation = async () => {
         const { status } = await Permissions.askAsync(Permissions.LOCATION);
         if(status === 'granted') {
-            let result = await Location.getCurrentPositionAsync({});
+            let result = await Location.getCurrentPositionAsync({
+                enableHighAccuracy:true
+            });
 
             if (result) {
                 this.props.sendLocation(result)
@@ -88,7 +90,7 @@ class CustomActions extends React.Component {
 
             const response = await fetch(result.uri);
             const blob = await response.blob();
-            var ref = firebase.storage().ref().child("g");
+            const ref = firebase.storage().ref().child("g");
             const snapshot = await ref.put(blob);
             const download = await snapshot.ref.getDownloadURL();
             this.props.imgQued(download);
