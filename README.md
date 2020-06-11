@@ -69,4 +69,5 @@ Creating a new AVD emulator on android studio also works well.
 
 Any issues or bugs can be reported here or to the author directly. 
 [Arcalise08](https://github.com/Arcalise08)
+
 [Project board used for this project](https://trello.com/b/UYv8u1Ed/achievement-5)
