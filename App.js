@@ -14,6 +14,9 @@ import Contacts from "./components/Contacts";
 import Chat from "./components/Chat";
 import NetInfo from "@react-native-community/netinfo";
 
+import * as Permissions from 'expo-permissions';
+import * as ImagePicker from 'expo-image-picker';
+
 const Stack = createStackNavigator();
 const firebase = require('firebase');
 require('firebase/firestore');
@@ -53,6 +56,7 @@ class App extends React.Component {
   }
 
     async componentDidMount() {
+
         NetInfo.fetch().then(state => {
             if(!state.isConnected) {
                 this.offlineData();
@@ -126,8 +130,6 @@ class App extends React.Component {
                 .then(doc => {
                     if (!doc.exists) {
                         this.contacts.set({
-                            username: "",
-                            _id: this.state.uid,
                             contacts: []
                         })
                     }
@@ -232,7 +234,6 @@ class App extends React.Component {
 
     updateMessages = (querySnapshot) => {
         const data = querySnapshot.data();
-
         if (data) {
             this.setState({
                 messages: data
@@ -247,8 +248,8 @@ class App extends React.Component {
         const data = querySnapshot.data();
         if (data) {
             this.setState({
-                username: data.username,
-                contacts: data.contacts
+                contacts: data.contacts,
+                username: data.username
             })
             this.localStorage("set", "contacts", JSON.stringify(data))
         }
@@ -259,6 +260,7 @@ class App extends React.Component {
         if (this.state.connected) {
             this.contacts.update({
                 username: username
+
             })
             const data = {username: username, uid: this.state.uid}
             this.localStorage("set", "userInfo", JSON.stringify(data))
@@ -288,6 +290,7 @@ class App extends React.Component {
     addContact = (contact) => {
       this.contacts.update({
           contacts: firebase.firestore.FieldValue.arrayUnion(contact)
+
       })
     }
 
@@ -318,8 +321,8 @@ class App extends React.Component {
                     text: "white",
                     background: "black",
                     message: {
-                        left: {background: "white", text: "black", time: "grey"},
-                        right: {background: "grey", text: "black", time: "#ccc3ca"},
+                        left: {background: "white", text: "black", time: "#5e5e5e"},
+                        right: {background: "#cfcfcf", text: "black", time: "#5e5e5e"},
                         system: "#647ef2"
                     }
                 }

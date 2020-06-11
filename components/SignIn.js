@@ -1,9 +1,12 @@
 import React from 'react';
 import {
     StyleSheet, Text, View, Alert,
-    Modal, TextInput, ImageBackground, Dimensions
+    Modal, TextInput, ImageBackground, Dimensions, KeyboardAvoidingView
 } from 'react-native';
+import { Button as ButtonNative } from 'react-native';
+
 import Button from "react-native-button";
+
 
 var width = Dimensions.get('window').width; //full width
 var height = Dimensions.get('window').height;
@@ -14,7 +17,7 @@ class SignIn extends React.Component {
         this.state = {
             username: "",
             promptName: false,
-            errorMSG: ""
+            errorMSG: "",
         }
     }
 
@@ -131,6 +134,7 @@ class SignIn extends React.Component {
                         </Modal>
                     </View>
                     <View style={{flex:1}}>
+
                         <Button containerStyle={{marginTop:25, alignSelf:"center", marginBottom: 10,width: 260, padding:10, height:45, overflow:'hidden', borderRadius:4, backgroundColor: this.props.extra.getColor.button}}
                                 style={{color: this.props.extra.getColor.text}}
                                 onPress={() => this.toChat()}>
@@ -143,6 +147,8 @@ class SignIn extends React.Component {
                                 }}>
                             Don't like your display name? Click here to change it!
                         </Button>
+
+
                     </View>
 
                 </ImageBackground>
