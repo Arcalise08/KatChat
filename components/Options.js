@@ -52,7 +52,7 @@ function Options(props) {
                                 </TouchableHighlight>
                             </View>
                             <Button
-                                containerStyle={{marginTop:25, padding:10, height:45, overflow:'hidden', borderRadius:4, backgroundColor: props.extra.getColor.button}}
+                                containerStyle={{marginTop:25, padding:10, height:45, overflow:'hidden', borderWidth:1, borderRadius:4, backgroundColor: props.extra.getColor.button}}
                                 style={{color: props.extra.getColor.text}}
                                 onPress={() => props.closeReq()}
                             >Done</Button>
@@ -86,7 +86,6 @@ const styles = StyleSheet.create({
     },
     modalView: {
         margin: 20,
-        backgroundColor: "white",
         borderRadius: 20,
         padding: 35,
         alignItems: "center",

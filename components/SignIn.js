@@ -20,9 +20,16 @@ class SignIn extends React.Component {
 
     toChat = () => {
         if (this.props.extra.getUser.username.length <= 2) {
-           this.setState({
-               promptName: true
-           })
+            if (this.props.extra.getConnection) {
+                this.setState({
+                    promptName: true
+                })
+            }
+            else {
+                this.props.navigation.navigate("Contacts", {name: "offline"})
+            }
+
+
         }
         else {
             this.props.navigation.navigate("Contacts", {name: this.props.extra.getUser.username})
@@ -98,7 +105,13 @@ class SignIn extends React.Component {
                                             })
                                         }}
                                     />
-                                    <Text style={{color: "red"}}>{this.state.errorMSG}</Text>
+                                    {   this.props.extra.getConnection ?
+                                        this.state.errorMSG != "" ? <Text style={{color: "red", marginTop: 15}}>{this.state.errorMSG}</Text> : null
+                                        :
+                                        <Text style={{color: "red", marginTop: 15}}>Cant connect to server(404)</Text>
+                                    }
+
+
                                     <View style={{flexDirection: "row", marginTop:10}}>
                                         <Button
                                             containerStyle={{marginTop:25, margin: 5, flex: 1,alignSelf:"center", marginBottom: 10, padding:10, height:45, overflow:'hidden', borderRadius:4, backgroundColor: this.props.extra.getColor.button}}
@@ -126,7 +139,6 @@ class SignIn extends React.Component {
                         <Button
                                 style={{color: this.props.extra.getColor.text,fontWeight:"bold", fontSize: 12, marginTop: 15}}
                                 onPress={() => {
-                                    this.props.extra.setUser("")
                                     this.setState({promptName: true})
                                 }}>
                             Don't like your display name? Click here to change it!

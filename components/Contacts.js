@@ -39,7 +39,7 @@ class Contacts extends React.Component {
                 activeOpacity={0.6}
                 underlayColor="#DDDDDD"
                 onPress={() => {this.props.navigation.navigate("Chat", { contact: title.username, friendID: title.friendID})}}
-                style={{ marginBottom:15, borderWidth:2, borderRadius: 5, backgroundColor: this.props.extra.getColor.button, height: 70}}
+                style={{ marginBottom:15, borderWidth:1, borderRadius: 5, backgroundColor: this.props.extra.getColor.button, height: 70}}
             >
                 <Text style={[styles.title, {color: this.props.extra.getColor.text}]}>{title.username}</Text>
             </TouchableHighlight>
@@ -113,11 +113,11 @@ class Contacts extends React.Component {
                         }}
                     >
                         <View style={styles.centeredView}>
-                            <View style={styles.modalView}>
+                            <View style={[styles.modalView, {backgroundColor: this.props.extra.getColor.modalBG}]}>
                                 <Text style={styles.modalText}>Search for a friend!</Text>
                                 <TextInput
                                     placeholder={"Username"}
-                                    style={{padding: 5, alignSelf:"stretch",height: 40, borderColor: 'gray', borderWidth: 1 }}
+                                    style={{padding: 5, alignSelf:"stretch",height: 40, backgroundColor: "white", borderColor: 'gray', borderWidth: 1 }}
                                     textAlign="center"
                                     textAlign="center"
                                     onChangeText={(text) => {
